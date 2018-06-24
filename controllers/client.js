@@ -6,8 +6,8 @@ function getClient (req, res) {
   let clientId = req.params.clientId
 
   Client.findById(clientId, (err, client) => {
-    if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
-    if (!client) return res.status(404).send({message: `El cliente no existe`})
+    if (err) return res.status(500).send({message: `Request error: ${err}`})
+    if (!client) return res.status(404).send({message: `Client does not exist`})
 
     res.status(200).send({ client })
   })
@@ -15,8 +15,8 @@ function getClient (req, res) {
 
 function getClients (req, res) {
   Client.find({}, (err, clients) => {
-    if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`})
-    if (!clients) return res.status(404).send({message: 'No existen clientes'})
+    if (err) return res.status(500).send({message: `Request error: ${err}`})
+    if (!clients) return res.status(404).send({message: 'There are no clients'})
 
     res.send(200, { clients })
   })
@@ -35,7 +35,7 @@ function saveClient (req, res) {
   client.description = req.body.description
 
   client.save((err, clientStored) => {
-    if (err) res.status(500).send({message: `Error al salvar en la base de datos: ${err} `})
+    if (err) res.status(500).send({message: `Error when saving in the database: ${err} `})
 
     res.status(200).send({ client: clientStored })
   })
@@ -46,7 +46,7 @@ function updateClient (req, res) {
   let update = req.body
 
   Client.findByIdAndUpdate(clientId, update, (err, clientUpdated) => {
-    if (err) res.status(500).send({message: `Error al actualizar el cliente: ${err}`})
+    if (err) res.status(500).send({message: `Error when updating the client: ${err}`})
 
     res.status(200).send({ client: clientUpdated })
   })
@@ -56,11 +56,11 @@ function deleteClient (req, res) {
   let clientId = req.params.clientId
 
   Client.findById(clientId, (err, client) => {
-    if (err) res.status(500).send({message: `Error al borrar el cliente: ${err}`})
+    if (err) res.status(500).send({message: `Error when deleting the client: ${err}`})
 
     client.remove(err => {
-      if (err) res.status(500).send({message: `Error al borrar el client: ${err}`})
-      res.status(200).send({message: 'El cliente ha sido eliminado'})
+      if (err) res.status(500).send({message: `Error when deleting the client: ${err}`})
+      res.status(200).send({message: 'Client has been deleted'})
     })
   })
 }
