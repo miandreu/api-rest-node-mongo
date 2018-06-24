@@ -11,7 +11,7 @@ function signUp (req, res) {
   })
 
   user.save((err) => {
-    if (err) return res.status(500).send({ message: `Error al crear el usuario: ${err}` })
+    if (err) return res.status(500).send({ message: `Error when creating th user: ${err}` })
 
     return res.status(201).send({ token: service.createToken(user) })
   })
@@ -20,11 +20,11 @@ function signUp (req, res) {
 function signIn (req, res) {
   User.find({ email: req.body.email }, (err, user) => {
     if (err) return res.status(500).send({ message: err })
-    if (!user) return res.status(404).send({ message: 'No existe el usuario' })
+    if (!user) return res.status(404).send({ message: 'There is no user' })
 
     req.user = user
     res.status(200).send({
-      message: 'Te has logueado correctamente',
+      message: 'You have successfully logged in',
       token: service.createToken(user)
     })
   })
