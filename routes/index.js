@@ -14,7 +14,7 @@ api.delete('/client/:clientId', auth, ClientCtrl.deleteClient)
 api.post('/signup', userCtrl.signUp)
 api.post('/signin', userCtrl.signIn)
 api.get('/private', auth, (req, res) => {
-  res.status(200).send({ message: 'Tienes acceso' })
+  res.status(200).send({ message: 'You have access' })
 })
 
 module.exports = api
