@@ -6,7 +6,7 @@ const userCtrl = require('../controllers/user')
 const auth = require('../middlewares/auth')
 const api = express.Router()
 
-api.get('/client', auth, ClientCtrl.getClients)
+api.get('/client', ClientCtrl.getClients)
 api.get('/client/:clientId', ClientCtrl.getClient)
 api.post('/client', auth, ClientCtrl.saveClient)
 api.put('/client/:clientId', auth, ClientCtrl.updateClient)
