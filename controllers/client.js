@@ -18,7 +18,7 @@ function getClients (req, res) {
     if (err) return res.status(500).send({message: `Request error: ${err}`})
     if (!clients) return res.status(404).send({message: 'There are no clients'})
 
-    res.status(200).send({ clients })
+    res.status(200).send({clients})
   })
 }
 
