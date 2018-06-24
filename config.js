@@ -1,5 +1,5 @@
 module.exports = {
   port: process.env.PORT || 3000,
   db: process.env.MONGODB_URI || 'mongodb://localhost:27017/clients',
-  SECRET_TOKEN: 'miclavedetokens'
+  SECRET_TOKEN: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9'
 }
