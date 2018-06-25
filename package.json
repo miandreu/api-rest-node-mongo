@@ -7,7 +7,7 @@
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Miquel Angel Andreu (https://github.com/miandreu)",
+  "author": "Miquel Angel Andreu (https://github.com/miandreu/api-rest-node-mongo)",
   "license": "",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
